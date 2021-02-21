@@ -8,19 +8,19 @@ from act_list import string_to_num
 import matplotlib.pyplot as plt
 
 partStandard = 50
-standardPath = "D:/py/Ai-coach01/standard/"
+standardPath = "D:/py/AI-coach-Server/standard/"
 commandActivate = "activate tensorflow"
 commandDeactivate = "conda deactivate"
-Font = r"D:/py/Ai-coach01/data/font/楷体_GB2312.ttf"  # 指定字体
+Font = r"D:/py/AI-coach-Server/data/font/楷体_GB2312.ttf"  # 指定字体
 bodyPart = ["头颈", "左肩臂", "左肘", "右肩臂", "右肘", "左胯", "左膝", "左脚踝", "右胯", "右膝", "右脚踝"]
 
 # 绘图生成报告
 def drawPic(Court, energy):
     print("drawPic")
     # 原图路径
-    pic = "D:/py/Ai-coach01/data/runningReport/report_default.png"
+    pic = "D:/py/AI-coach-Server/data/runningReport/report_default.png"
     # 保存路径
-    path = "D:/py/Ai-coach01/data/runningReport/" + call_args.report_name + ".png"
+    path = "D:/py/AI-coach-Server/data/runningReport/" + call_args.report_name + ".png"
     # 打开初始文件
     image = Image.open(pic)
     font = ImageFont.truetype(Font, 70)
@@ -130,9 +130,11 @@ def WaveGet(pointXYlist, part, name):
     df.plot()
     ax = df.plot()
     fig = ax.get_figure()
-    if os.path.exists("D:/py/Ai-coach01/data/partYchart/" + name) == False:
-        os.mkdir("D:/py/Ai-coach01/data/partYchart/" + name)  # 创建目录
-    fig.savefig("D:/py/Ai-coach01/data/partYchart/" + name + "/" + str(part) + ".jpg")
+    if os.path.exists("D:/py/AI-coach-Server/data/partYchart/" + name) == False:
+        os.mkdir("D:/py/AI-coach-Server/data/partYchart/" + name)  # 创建目录
+    fig.savefig(
+        "D:/py/AI-coach-Server/data/partYchart/" + name + "/" + str(part) + ".jpg"
+    )
     plt.close()
 
     mid = (max(featureYP) + min(featureYP)) / 2
@@ -149,17 +151,21 @@ if __name__ == "__main__":
 
     call_args = parser.parse_args()
     # 生成的json文件目录
-    runningPath = "D:/py/Ai-coach01/data/runningJson/" + call_args.report_name + "/"
+    runningPath = (
+        "D:/py/AI-coach-Server/data/runningJson/" + call_args.report_name + "/"
+    )
     # 生成的图表文件目录
-    chartPath = "D:/py/Ai-coach01/data/runningChart/" + call_args.report_name + "/"
+    chartPath = "D:/py/AI-coach-Server/data/runningChart/" + call_args.report_name + "/"
     # 生成的报告文件目录
-    reportPath = "D:/py/Ai-coach01/data/runningReport/" + call_args.report_name + "/"
+    reportPath = (
+        "D:/py/AI-coach-Server/data/runningReport/" + call_args.report_name + "/"
+    )
     # 启动openpose命令
     commandGenerateJson = (
-        r"bin\OpenPoseDemo.exe --video D:\py\Ai-coach01\data\test"
+        r"bin\OpenPoseDemo.exe --video D:\py\AI-coach-Server\data\test"
         + "\\"
         + call_args.report_name
-        + ".avi  --write_json D:/py/Ai-coach01/data/runningJson"
+        + ".avi  --write_json D:/py/AI-coach-Server/data/runningJson"
         + "/"
         + call_args.report_name
     )
