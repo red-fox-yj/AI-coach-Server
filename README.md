@@ -13,3 +13,5 @@
 
 
 Android客户端连接：[点我](https://github.com/red-fox-yj/AI-coach-Client)
+
+原始项目效果视频：[点我](https://www.bilibili.com/video/BV1Bt4y1S7aL/)
